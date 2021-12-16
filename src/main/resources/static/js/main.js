@@ -24,7 +24,7 @@
             headers: { "Accept": "application/json", "Content-Type": "application/json" },
             body: JSON.stringify({
                 name: event.target.form.name.value,
-                bought: event.target.form.bought.value
+                bought: event.target.form.bought.checked
             })
         });
         if (response.ok === true) {
@@ -65,7 +65,7 @@
 
         // tr.innerHTML  = `<td><input name="input_id" value="${product.id}" form="${form.id}"></td>`;
         tr.innerHTML += `<td><input name="input_name" value="${product.name}" form="${form.id}"></td>`;
-        tr.innerHTML += `<td><input name="input_bought" value="${product.bought}" form="${form.id}"></td>`;
+        tr.innerHTML += `<td><input name="input_bought" type="checkbox" ${product.bought ? 'checked' : ''} value="${product.bought}" form="${form.id}"></td>`;
         tr.innerHTML += `<td><button type="submit" class="button_update" form="${form.id}">Изменить</button></td>`;
         tr.innerHTML += `<td><button type="submit" class="button_delete" form="${form.id}">Удалить</button></td>`;
 

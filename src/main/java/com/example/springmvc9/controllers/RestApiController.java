@@ -32,7 +32,7 @@ public class RestApiController {
     private ResponseEntity<String> addProduct(@RequestBody JSONObject jsonProduct) {
 
         String name = (String) jsonProduct.get("name");
-        String bought = (String) jsonProduct.get("bought");
+        String bought = jsonProduct.get("bought").toString();
 
         String id = Product.addProduct(name, bought);
 
@@ -47,6 +47,7 @@ public class RestApiController {
         String id = (String) jsonProduct.get("id");
         String name = (String) jsonProduct.get("name");
         String bought = (String) jsonProduct.get("bought");
+        bought = (jsonProduct.get("bought").equals("false") ? "true" : "false");
 
         Product.removeProduct(id);
         Product.addProduct(name, bought);
